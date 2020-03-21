@@ -8,12 +8,10 @@ For more details about the mod itself, see the FishingForTrouble-Readme.html.
 
 ## Who is currently maintaining this mod? ##
 
-Active members of InfinityMods Github organization
+Roxanne
 
-## Where to look for help regarding this mod? ##
-- http://www.shsforums.net/forum/550-fishing-for-trouble
-- https://www.gibberlings3.net/forums
-- https://forums.beamdog.com
+## Where to look for help regarding this version of the mod? ##
+- http://baldursextendedworld.com/Vanilla_Forums/categories/-the-big-mods
 
 ## Changes since v3.0 HF 1 (last release by Yovaneth) ##
 
