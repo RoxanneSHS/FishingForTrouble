@@ -1,6 +1,6 @@
 BACKUP ~fishingfortrouble/backup~
-AUTHOR ~www.shsforums.net/forum/550-fishing-for-trouble/~
-VERSION ~3.2.6~
+AUTHOR ~Yovaneth~
+VERSION ~3.2.7~
 
 AUTO_TRA ~fishingfortrouble/language/%s~
 
@@ -27,60 +27,31 @@ END
 LANGUAGE ~English (Yovaneth)~ ~english~ ~fishingfortrouble/language/english/english.tra~
 LANGUAGE ~Russian (by subzero400, updated by AGKanevchev)~ ~russian~ ~fishingfortrouble/language/russian/russian.tra~
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//Core component: Fishing for Trouble by Yovaneth
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 BEGIN @20000
-REQUIRE_PREDICATE GAME_INCLUDES ~TOB~ ~This mod requires Baldur's Gate II: Throne of Bhaal or Enhanced Edition~
+REQUIRE_PREDICATE GAME_IS ~BG2EE EET~ ~This mod requires BG2EE or EET~
 
-//##################################################
-// Apply IDS and EXE patches if necessary (no TobEx)
-//##################################################
 INCLUDE ~fishingfortrouble/lib/patches.tpa~
 
-//##################################################
-// Copy new material
-//##################################################
-//Spells
 COPY ~fishingfortrouble/spells/yselmin.spl~ ~override~
 	SAY NAME1 @149
 
 COPY ~fishingfortrouble/spells/ysghoul.spl~ ~override~
 
-//##################################################
-//Cutscenes
-//##################################################
-//Cerendor Hold
 COMPILE ~fishingfortrouble/cutscenes/yscutgte.baf~
 COMPILE ~fishingfortrouble/cutscenes/yscut01.baf~
 COMPILE ~fishingfortrouble/cutscenes/yscut02.baf~
 COMPILE ~fishingfortrouble/cutscenes/yscut03.baf~
 
-//##################################################
-//Bams
-//##################################################
 COPY ~fishingfortrouble/bams~ ~override~
 
-//##################################################
-//Music
-//##################################################
 COPY ~fishingfortrouble/audio/ysblank.mus~ ~music~
 COPY_EXISTING ~songlist.2da~ ~override~
 	SET_2DA_ENTRY 0 2 3 ~YSBLANK.MUS~ // "no_music" resource
 
-//##################################################
-//Sounds
-//##################################################
-	COPY ~fishingfortrouble/sounds~ ~override~
+COPY ~fishingfortrouble/sounds~ ~override~
 
-//##################################################
-//Ghoul portrait
-//##################################################
-	COPY ~fishingfortrouble/bmp~ ~override~
+COPY ~fishingfortrouble/bmp~ ~override~
 
-//##################################################
-//2da
-//##################################################
 COPY_EXISTING ~itemdial.2da~ ~override~
 	BUT_ONLY_IF_IT_CHANGES
 
@@ -95,66 +66,26 @@ END ELSE BEGIN
 	APPEND ~racetext.2da~ ~108	15946~ UNLESS ~^108~
 END
 
-//##################################################
-//Items
-//##################################################
 INCLUDE ~fishingfortrouble/lib/items.tpa~
 
-//##################################################
-//Dialog files
-//##################################################
 INCLUDE ~fishingfortrouble/lib/dialog.tpa~
 
-//##################################################
-//Areas
-//##################################################
 INCLUDE ~fishingfortrouble/lib/areas.tpa~
 
-//##################################################
-//Actor scripts
-//##################################################
 INCLUDE ~fishingfortrouble/lib/actor_scripts.tpa~
 
-//##################################################
-//Area scripts
-//##################################################
 INCLUDE ~fishingfortrouble/lib/area_scripts.tpa~
 
-//##################################################
-//Other area scripts
-//##################################################
 EXTEND_TOP ~baldur.bcs~ ~fishingfortrouble/area_scripts/ysbaldur.baf~ EVALUATE_BUFFER
 
-//##################################################
-//Stores
-//##################################################
 INCLUDE ~fishingfortrouble/lib/stores.tpa~
 
-//##################################################
-//Uncompressed Tilesets
-//##################################################
 COPY ~fishingfortrouble/tis~ ~override~
 
-//##################################################
-//Worldmap and icons patching - do this last so we can patch the new areas too
-//##################################################
 INCLUDE ~fishingfortrouble/lib/patch_worldmap.tpa~
 
-//##################################################
-// .ogg and .tiz conversion
-//##################################################
-LAF HANDLE_AUDIO END // audio folder
-LAF HANDLE_TILESETS END // tiz folder
+LAF HANDLE_AUDIO END
 
-ACTION_IF GAME_IS ~eet BG2EE~ BEGIN
-COPY ~fishingfortrouble/tis_ee~ ~override~
-END
-
-// End of core component
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//Optional component - install major character portraits
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 BEGIN @20001
 REQUIRE_COMPONENT ~fishingfortrouble.tp2~ 0 ~This component requires the main component.~
 
