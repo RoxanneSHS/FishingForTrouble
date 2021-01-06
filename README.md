@@ -5,6 +5,6 @@ Yovaneth is no longer supporting this mod and has given permission to update it.
 For more details about the mod itself, see the FishingForTrouble-Readme.html.
 
 Support
-- http://baldursextendedworld.com/Vanilla_Forums/categories/-the-big-mods
+http://baldursextendedworld.com/Vanilla_Forums/categories/-the-big-mods
 
 
